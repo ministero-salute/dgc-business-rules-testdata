@@ -9,3 +9,7 @@ npm install
 npm run build
 npm test
 
+# generate HTML:
+rm ../html/*.html
+npm run render
+
