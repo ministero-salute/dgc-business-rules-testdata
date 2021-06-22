@@ -4,6 +4,7 @@ import { gt } from "semver"
 
 import { readJson } from "./file-utils"
 import { fromRepoRoot } from "./repo-struct"
+import { Rule } from "./typings"
 
 
 import Ajv from "ajv"
@@ -37,7 +38,7 @@ const validateAffectedFields = (rule: any): null | { actual: string[], computed:
 }
 
 
-const validateMetaData = (rule: any) => {
+const validateMetaData = (rule: Rule) => {
     const errors: string[] = []
 
     if (rule.Type !== "Acceptance") {
