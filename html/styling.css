@@ -66,3 +66,26 @@ span.path {
     color: purple;
 }
 
+div.table {
+    display: table;
+    width: 100%;
+}
+
+div.table-body {
+    display: table-row-group;
+}
+
+div.row {
+    display: table-row;
+}
+
+div.cell {
+    display: table-cell;
+    border: 1px solid #999;
+    padding: 0.25rem;
+}
+
+div.header {
+    background-color: lightskyblue;
+}
+

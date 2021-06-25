@@ -8,9 +8,12 @@ import { gatherRuleSetsAsMap, readRuleJson, RuleMap } from "./repo-struct"
 import { Rule } from "./typings"
 
 
-const RuleRendering = ({ rule }: { rule: Rule }) => <div>
-    <span>rule ID={rule.Identifier}</span>
-    <CertLogicRendering expr={rule.Logic} />
+const RuleRendering = ({ rule }: { rule: Rule }) => <div className="row">
+    <div className="cell"><span>{rule.Identifier}</span></div>
+    <div className="cell"><span>{rule.Description[0].desc}</span></div>
+    <div className="cell">
+        <CertLogicRendering expr={rule.Logic} />
+    </div>
 </div>
 
 
@@ -23,7 +26,16 @@ const RuleSetRendering = ({ ruleSetId, ruleMap }: { ruleSetId: string, ruleMap: 
         </head>
         <body>
         <h1>Rule set: {ruleSetId}</h1>
-        {Object.keys(ruleMap).map((ruleId, index) => <RuleRendering rule={readRuleJson(ruleSetId, ruleId)} key={index}/>)}
+        <div className="table">
+            <div className="table-body">
+                <div className="row header">
+                    <div className="cell"><span>Identifier</span></div>
+                    <div className="cell"><span>Description (EN)</span></div>
+                    <div className="cell"><span>Logic (compactified notation)</span></div>
+                </div>
+                {Object.keys(ruleMap).map((ruleId, index) => <RuleRendering rule={readRuleJson(ruleSetId, ruleId)} key={index}/>)}
+            </div>
+        </div>
         </body>
     </html>
 }
