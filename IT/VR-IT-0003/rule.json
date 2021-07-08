@@ -10,7 +10,7 @@
   "Description": [
     {
       "lang": "en",
-      "desc": "Verification Datetime must be more than 14 days and less than 365 days after the last date of vaccination."
+      "desc": "Date of vaccination must be before the current time."
     }
   ],
   "ValidFrom": "2021-06-01T00:00:00Z",
@@ -18,24 +18,14 @@
   "AffectedFields": [
     "v.0",
     "v.0.dt"
-  ]
-,
+  ],
   "Logic": {
     "if": [
       {
         "var": "payload.v.0"
       },
       {
-        "not-after": [
-          {
-            "plusTime": [
-              {
-                "var": "payload.v.0.dt"
-              },
-              14,
-              "day"
-            ]
-          },
+        "not-before": [
           {
             "plusTime": [
               {
@@ -50,7 +40,7 @@
               {
                 "var": "payload.v.0.dt"
               },
-              365,
+              0,
               "day"
             ]
           }

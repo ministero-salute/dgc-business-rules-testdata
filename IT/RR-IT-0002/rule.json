@@ -10,7 +10,7 @@
   "Description": [
     {
       "lang": "en",
-      "desc": "The validity start date must be greater than or equal to the first positive test date  +11 days and validity end date must be less than or equal to the first postive test date +180."
+      "desc": "The validity start date must be before the validity end date."
     }
   ],
   "ValidFrom": "2021-06-01T00:00:00Z",
@@ -18,9 +18,7 @@
   "AffectedFields": [
     "r.0",
     "r.0.df",
-    "r.0.du",
-
-    "r.0.fr"
+    "r.0.du"
   ],
   "Logic": {
     "if": [
@@ -28,49 +26,23 @@
         "var": "payload.r.0"
       },
       {
-        "and": [
+        "before": [
           {
-            "not-before": [
+            "plusTime": [
               {
-                "plusTime": [
-                  {
-                    "var": "payload.r.0.df"
-                  },
-                  0,
-                  "day"
-                ]
+                "var": "payload.r.0.df"
               },
-              {
-                "plusTime": [
-                  {
-                    "var": "payload.r.0.fr"
-                  },
-                  11,
-                  "day"
-                ]
-              }
+              0,
+              "day"
             ]
           },
           {
-            "not-after": [
+            "plusTime": [
               {
-                "plusTime": [
-                  {
-                    "var": "payload.r.0.du"
-                  },
-                  0,
-                  "day"
-                ]
+                "var": "payload.r.0.du"
               },
-              {
-                "plusTime": [
-                  {
-                    "var": "payload.r.0.fr"
-                  },
-                  180,
-                  "day"
-                ]
-              }
+              0,
+              "day"
             ]
           }
         ]

@@ -2,13 +2,12 @@
   "payload": {
     "r": [
       {
-        "fr": "2021-05-20",
         "df": "2021-06-01",
-        "du": "2021-07-01"
+        "du": "2021-06-01"
       }
     ]
   },
-  "expected": true,
+  "expected": false,
   "external": {
     "valueSets": {
       "country-2-codes": [
